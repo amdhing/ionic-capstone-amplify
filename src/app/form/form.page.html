@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <ion-title>New Risk Quote Form</ion-title>
+    <ion-icon slot="end" (click)="gobacktohome()">Home</ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+{{ username }}
+<div id="container">
+<form [formGroup]="todo" (ngSubmit)="logForm()">
+  <ion-item>
+    <ion-label>Todo</ion-label>
+    <ion-input type="text" formControlName="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Age</ion-label>
+    <ion-input type="number" placeholder="Number in range 3-121" formControlName="age"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Date of Birth</ion-label>
+    <ion-input type="date" placeholder="dd/MM/yy" formControlName="dob"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Smoker</ion-label>
+    <ion-toggle fromControlName="smoker" (ionChange)="notify()"></ion-toggle>
+  </ion-item>
+ 
+  <button ion-button size="large" expand="block" type="submit" [disabled]="!todo.valid">Submit</button>
+ 
+</form>
+</div>
+</ion-content>

@@ -1,0 +1,43 @@
+{
+    "paths": [
+        {
+            "name": "/writer",
+            "lambdaFunction": "writerlambda",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/writer"
+        }
+    ],
+    "resourceName": "writerresource",
+    "apiName": "writerresource",
+    "functionArns": [
+        {
+            "lambdaFunction": "writerlambda"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-ioniccapstoneamplify-dev-174750-authRole",
+        "unAuthRoleName": "amplify-ioniccapstoneamplify-dev-174750-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "writerlambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "8432eaa0"
+}

@@ -1,8 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <!-- <ion-icon slot="start" (click)="">Back</ion-icon> -->
     <ion-title>
-      Blank
+      Your account, {{ username }}
     </ion-title>
+    <ion-button slot="end" (click)="logout()">Logout</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -13,8 +15,13 @@
     </ion-toolbar>
   </ion-header>
 
+  
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <!-- <strong>Ready to create an app?</strong> -->
+    <!-- <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
+    <!-- <div id="assessment_btn"> -->
+      <strong><ion-button (click)="gotoform()" color="primary">Start Assessment</ion-button></strong>
+    <!-- </div> -->
   </div>
+  
 </ion-content>

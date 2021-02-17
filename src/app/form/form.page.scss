@@ -1,0 +1,17 @@
+:root {
+    --placeholder-opacity: 0.5
+}
+
+#container {
+    text-align: center;
+  
+    // position: relative;
+    // left: 20%;
+    // right: 20%;
+    // width: 50%;
+    // top: 10%;
+    // transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
