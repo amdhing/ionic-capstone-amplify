@@ -31,3 +31,10 @@ span {
 .center {
     text-align: center;
 }
+
+ion-content{
+    //height: 100vh !important;
+    //--ion-background-color:#6666;
+    --background:url(../../assets/bg.jpg) no-repeat center center / cover;
+    --background-size: cover;
+  }

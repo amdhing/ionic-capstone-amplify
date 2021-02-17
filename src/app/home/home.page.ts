@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonSlides } from '@ionic/angular';
 import { API, Auth } from 'aws-amplify';
 
 @Component({
@@ -8,9 +9,14 @@ import { API, Auth } from 'aws-amplify';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  slideOptions = {
+    slidesPerView: 3
+  };
   username : string;
-  constructor(private router: Router) {}
+  submitted: boolean = false;
+  constructor(private router: Router) {
+    
+  }
 
   public logout(){
     Auth.signOut().then(res=>{
@@ -19,6 +25,7 @@ export class HomePage {
   }
 
   public getQuoteHistory(){
+    // this.submitted = true;
     const myInit = { 
       response: true,
       queryStringParameters: {
