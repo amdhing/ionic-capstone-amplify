@@ -35,6 +35,10 @@ export class FormPage implements OnInit {
     this.smoke = false;
     }
 
+    public logout(){
+      Auth.signOut().then(res=>{
+        this.router.navigate(['']);
+      })};
 
    public notify() {
     if (this.smoke) {this.smoke = false}

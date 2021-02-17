@@ -190,7 +190,7 @@ app.post(path, function(req, res) {
   let policyDuration = Math.floor(Math.random() * (polMax - polMin) + polMin);
 
 
-  req.body.pk = req.apiGateway.event.requestContext.identity.user;
+  // req.body.pk = req.apiGateway.event.requestContext.identity.user;
   req.body.sk = "q#" + currentTSiso + "#" + qId;
   req.body.quote = quote;
   req.body.qId = qId;
