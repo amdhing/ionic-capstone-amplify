@@ -8,28 +8,83 @@
 </ion-header>
 
 <ion-content>
-{{ username }}
-<div id="container">
-<form [formGroup]="todo" (ngSubmit)="logForm()">
-  <ion-item>
-    <ion-label>Todo</ion-label>
-    <ion-input type="text" formControlName="title"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Age</ion-label>
-    <ion-input type="number" placeholder="Number in range 3-121" formControlName="age"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Date of Birth</ion-label>
-    <ion-input type="date" placeholder="dd/MM/yy" formControlName="dob"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Smoker</ion-label>
-    <ion-toggle fromControlName="smoker" (ionChange)="notify()"></ion-toggle>
-  </ion-item>
- 
-  <button ion-button size="large" expand="block" type="submit" [disabled]="!todo.valid">Submit</button>
- 
-</form>
-</div>
+  <h2>For you, {{ username }}</h2>
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+        <form [formGroup]="todo" *ngIf="!submitted" (ngSubmit)="logForm()">
+          <!-- <ion-item>
+            <ion-label>*</ion-label>
+            <ion-input type="text" formControlName="title"></ion-input>
+          </ion-item> -->
+          <ion-item>
+            <ion-label>Policy Duration*</ion-label>
+            <ion-input type="number" placeholder="Number in months" formControlName="policyDuration"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Date of Birth*</ion-label>
+            <ion-input type="date" placeholder="dd/MM/yy" formControlName="dob"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Smoker*</ion-label>
+            <ion-select [class.invalid]="!todo.controls.smoke.valid && (todo.controls.smoke.dirty || submitAttempt)"
+            formControlName="smoke" placeholder="Yes/No">
+              <ion-select-option *ngFor="let option of smoker" [value]="option.value">{{ option.viewValue }}</ion-select-option>
+              <!-- <ion-select-option value="no">No</ion-select-option> -->
+            </ion-select>
+            <!-- <ion-toggle fromControlName="smoker" (ionChange)="notify()"></ion-toggle> -->
+          </ion-item>
+        <ion-item>
+          <ion-label>Biological Gender*</ion-label>
+          <ion-select [class.invalid]="!todo.controls.gender.valid && (todo.controls.gender.dirty || submitAttempt)"
+          formControlName="gender" placeholder="Select One">
+              <ion-select-option *ngFor="let sex of sexes" [value]="sex.value">{{sex.viewValue}}</ion-select-option>
+              <!-- <ion-select-option value="female">Female</ion-select-option> -->
+          </ion-select>
+        </ion-item>
+          <ion-button expand="block" type="submit" [disabled]="!todo.valid">Submit</ion-button>
+        </form>
+          <ion-card *ngIf="submitted">
+            <div class="center">
+            <ion-card-title>
+              <ion-icon name="person-circle-outline"></ion-icon>
+              Insurance plan quote
+            </ion-card-title>
+            </div>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>Identifier</ion-col>
+                  <ion-col>{{ username }}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Age</ion-col>
+                  <ion-col>{{ age }} years</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Duration of Policy</ion-col>
+                  <ion-col>{{ policyDuration }} months</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Biological Gender</ion-col>
+                  <ion-col>{{ todo.value.gender }}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Smoker</ion-col> 
+                  <ion-col>{{ todo.value.smoke }}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Quote price</ion-col>
+                  <ion-col>
+                    <ion-label>€ {{quote}} <span>per month*</span></ion-label>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

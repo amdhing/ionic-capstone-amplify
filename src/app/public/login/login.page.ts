@@ -19,13 +19,13 @@ export class LoginPage implements OnInit {
     this.formFields = [
       {
         type: "username",
-        label: "Username",
-        placeholder: "capstone",
+        label: "Email address",
+        placeholder: "capstone@amazon.com",
         required: true,
       },
       {
         type: "email",
-        label: "Email address",
+        label: "Re-type Email address",
         placeholder: "capstone@amazon.com",
         required: true,
       },

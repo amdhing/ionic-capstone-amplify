@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth } from 'aws-amplify';
+import { API, Auth } from 'aws-amplify';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +16,18 @@ export class HomePage {
     Auth.signOut().then(res=>{
       this.router.navigate(['']);
     })
+  }
+
+  public getQuoteHistory(){
+    const myInit = { 
+      response: true,
+      queryStringParameters: {
+      'pk': 'byPrice'
+    }
+  };
+    API.get('writerresource', '/writer', myInit).then(response => {
+      console.log(response);
+    }).catch(error => console.log(error));
   }
 
   public gotoform(){

@@ -66,6 +66,7 @@ app.get(path + hashKeyPath, function(req, res) {
     ComparisonOperator: 'EQ'
   }
 
+  console.log(condition);
   if (userIdPresent && req.apiGateway) {
     condition[partitionKeyName]['AttributeValueList'] = [req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH ];
   } else {
