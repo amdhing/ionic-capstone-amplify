@@ -2,9 +2,10 @@
   <ion-toolbar>
     <!-- <ion-icon slot="start" (click)="">Back</ion-icon> -->
     <ion-title>
+      <img alt="logo" height="40"   src="../../../assets/logo.jpg">
       Your account, {{ username }}
     </ion-title>
-    <ion-button slot="end" (click)="getQuoteHistory();submitted = !submitted">{{ submitted? "Hide Quotes" : "My Quotes" }}</ion-button>
+    <ion-button slot="end" (click)="getQuoteHistory();submitted = !submitted">{{ submitted && queryLoaded ? "Hide Quotes" : "My Quotes" }}</ion-button>
     <ion-button slot="end" (click)="logout()">Logout</ion-button>
   </ion-toolbar>
 </ion-header>
@@ -16,8 +17,8 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-slides *ngIf="submitted" [options]="slideOptions">
-    <ion-slide *ngFor=" let x of [0,1,2]">
+  <ion-slides *ngIf="submitted && queryLoaded" [options]="slideOptions">
+    <ion-slide *ngFor=" let item of queryItems">
       <ion-card>
         <div class="center">
         <ion-card-title>
@@ -29,28 +30,28 @@
           <ion-grid>
             <ion-row>
               <ion-col>Identifier</ion-col>
-              <ion-col> username </ion-col>
+              <ion-col>{{ item.pk }}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col>Age</ion-col>
-              <ion-col> age  years</ion-col>
+              <ion-col>Time of quote</ion-col>
+              <ion-col>{{ item.timestamp }}</ion-col>
             </ion-row>
             <ion-row>
               <ion-col>Duration of Policy</ion-col>
-              <ion-col> policyDuration  months</ion-col>
+              <ion-col>{{ item.duration }} months</ion-col>
             </ion-row>
-            <ion-row>
+            <!-- <ion-row>
               <ion-col>Biological Gender</ion-col>
               <ion-col> todo.value.gender </ion-col>
-            </ion-row>
-            <ion-row>
+            </ion-row> -->
+            <!-- <ion-row>
               <ion-col>Smoker</ion-col> 
               <ion-col> todo.value.smoke </ion-col>
-            </ion-row>
+            </ion-row> -->
             <ion-row>
               <ion-col>Quote price</ion-col>
               <ion-col>
-                <ion-label>€ quote <span>per month*</span></ion-label>
+                <ion-label>€ {{ item.quote }} <span>pm*</span></ion-label>
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -63,7 +64,7 @@
   <ion-row>
     <ion-col></ion-col>
     <ion-col>
-      <ion-button (click)="gotoform()" color="primary" >Start Assessment</ion-button>
+      <ion-button (click)="gotoform()" color="primary" >Start New Assessment</ion-button>
       <!-- fill="outline" -->
     </ion-col>
     <ion-col></ion-col>

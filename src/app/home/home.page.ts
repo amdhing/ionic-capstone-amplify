@@ -13,7 +13,14 @@ export class HomePage {
     slidesPerView: 3
   };
   username : string;
+
+  // for My Quotes button
   submitted: boolean = false;
+  // for making sure query results are available
+  queryLoaded: boolean = false;
+
+  queryItems: any;
+
   constructor(private router: Router) {
     
   }
@@ -26,15 +33,23 @@ export class HomePage {
 
   public getQuoteHistory(){
     // this.submitted = true;
-    const myInit = { 
-      response: true,
-      queryStringParameters: {
-      'pk': 'byPrice'
+    if(!this.submitted){
+
+      const myInit = { 
+        headers: {},
+        response: true,
+        queryStringParameters: {
+        "Limit":"3"
+      }
+    };
+      API.get('writerresource', `/writer/${this.username}`, myInit).then(response => {
+        console.log(response);
+        this.queryItems = response.data;
+        this.queryLoaded = true;
+      }).catch(error => console.log(error));
+
     }
-  };
-    API.get('writerresource', '/writer', myInit).then(response => {
-      console.log(response);
-    }).catch(error => console.log(error));
+    
   }
 
   public gotoform(){

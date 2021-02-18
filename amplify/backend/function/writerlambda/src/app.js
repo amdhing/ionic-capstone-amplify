@@ -83,11 +83,24 @@ app.get(path + hashKeyPath, function(req, res) {
     KeyConditions: condition
   }
 
+  // amdhing
+  // adding limit from parsing queryStringParameters
+  req.url.split('?').forEach(element => {
+    if (element.startsWith('Limit')) {
+      queryParams['Limit'] = element.split('=')[1];
+    }
+  });
+
   dynamodb.query(queryParams, (err, data) => {
     if (err) {
       res.statusCode = 500;
       res.json({error: 'Could not load items: ' + err});
     } else {
+      data.Items.forEach(item => {
+        let skArray = item.sk.split("#");
+        // console.log(typeof(item));
+        item['timestamp'] = skArray[1];
+      });
       res.json(data.Items);
     }
   });

@@ -1,14 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    
-    <ion-title>New Risk Quote Form</ion-title>
     <ion-button slot="start" (click)="gobacktohome()">Home</ion-button>
+    <ion-title>New Insurance Quote Form</ion-title> 
+    <ion-title slot="end">{{ username }}</ion-title>
     <ion-button slot="end" (click)="logout()">Logout</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h2>For you, {{ username }}</h2>
+  <!-- <h2>For you, </h2> -->
   <ion-grid>
     <ion-row>
       <ion-col></ion-col>
