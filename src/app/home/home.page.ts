@@ -31,6 +31,10 @@ export class HomePage {
     })
   }
 
+  public gotohistory(){
+    this.router.navigate(['history'])
+  }
+  
   public getQuoteHistory(){
     // this.submitted = true;
     if(!this.submitted){
@@ -59,7 +63,7 @@ export class HomePage {
   ngOnInit() {
     Auth.currentUserInfo().then(info => {
       this.username = info["attributes"]["email"];
-      console.log(info);
+      // console.log(info);
     }).catch(err => console.log(err));
   }
 

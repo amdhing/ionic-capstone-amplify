@@ -17,6 +17,11 @@ const routes: Routes = [
     canActivate:[AuthGuard],
     loadChildren: () => import('./form/form.module').then( m => m.FormPageModule)
   },
+  {
+    path: 'history',
+    canActivate:[AuthGuard],
+    loadChildren: () => import('./history/history.module').then( m => m.HistoryPageModule)
+  },
 ];
 
 @NgModule({

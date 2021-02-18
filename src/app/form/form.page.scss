@@ -31,7 +31,11 @@ span {
 .center {
     text-align: center;
 }
-
+foo {
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
 ion-content{
     //height: 100vh !important;
     //--ion-background-color:#6666;

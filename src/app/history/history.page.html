@@ -1,24 +1,16 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <!-- <ion-icon slot="start" (click)="">Back</ion-icon> -->
+    <ion-button slot="start" (click)="gobacktohome()">Home</ion-button>
     <ion-title>
       <img alt="logo" height="40"   src="../../../assets/logo.jpg">
       Your account, {{ username }}
     </ion-title>
-    <ion-button slot="end" (click)="gotohistory()">My Quotes</ion-button>
-    <!-- "getQuoteHistory();submitted = !submitted">{{ submitted && queryLoaded ? "Hide Quotes" : "My Quotes" }} -->
     <ion-button slot="end" (click)="logout()">Logout</ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-slides *ngIf="submitted && queryLoaded" [options]="slideOptions">
+<ion-content>
+  <ion-slides *ngIf="queryLoaded" [options]="slideOptions">
     <ion-slide *ngFor=" let item of queryItems">
       <ion-card>
         <div class="center">
@@ -60,16 +52,4 @@
       </ion-card>
     </ion-slide>
   </ion-slides>
-      <!-- <strong><ion-button (click)="gotoform()" color="primary">Start Assessment</ion-button></strong> -->
-<ion-grid>
-  <ion-row>
-    <ion-col></ion-col>
-    <ion-col>
-      <ion-button (click)="gotoform()" color="primary" >Start New Assessment</ion-button>
-      <!-- fill="outline" -->
-    </ion-col>
-    <ion-col></ion-col>
-  </ion-row>
-</ion-grid>
-  
 </ion-content>

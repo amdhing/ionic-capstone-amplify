@@ -77,8 +77,13 @@
                 <ion-row>
                   <ion-col>Quote price</ion-col>
                   <ion-col>
-                    <ion-label>€ {{quote}} <span>per month*</span></ion-label>
+                    <ion-label>€ {{quote}} /<span>month*</span></ion-label>
                   </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                  <ion-button *ngIf="submitted" (click)="gobacktohome()">Proceed for Purchase</ion-button>
+                </ion-col>
                 </ion-row>
               </ion-grid>
             </ion-card-content>
