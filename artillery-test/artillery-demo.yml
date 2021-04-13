@@ -1,0 +1,20 @@
+config:
+  # target: "https://abcdefgh.execute-api.eu-west-2.amazonaws.com/noauth/writer"
+  # Ofcourse for testing, the Auth and Sigv4 can be setup on artillery
+  # and that should be the recommended way
+  # For testing without auth, disable IAM auth on APIGW and deploy to a new stage
+  #  add that stage endpoint as target below
+  target: "<Test Stage Endpoint with /writer at the end here>"
+  phases:
+    - duration: 10
+      arrivalRate: 50
+scenarios:
+    - name: read write test quotes
+      flow:
+          - post:
+              url: "/"
+              json:
+                  pk: "foo@amazon.com"
+                  test: "yes"
+          - get:
+              url: "/foo@amazon.com"
