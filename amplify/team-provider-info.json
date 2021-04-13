@@ -42,7 +42,7 @@
       "function": {
         "writerlambda": {
           "deploymentBucketName": "amplify-ioniccapstoneamplify-sampledev-134617-deployment",
-          "s3Key": "amplify-builds/writerlambda-63586d4b466d356d7348-build.zip"
+          "s3Key": "amplify-builds/writerlambda-70304c325337434c4371-build.zip"
         }
       },
       "hosting": {
