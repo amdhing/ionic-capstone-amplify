@@ -67,11 +67,19 @@ export class FormPage implements OnInit {
     this.router.navigate(['home'])
   }
 
-  getpksk() {
+  getPutPayload() {
     const pk = this.username;
     const sk = "hello again";
-    
-    return {"pk": pk, "sk": sk};
+    const age = this.age;
+    const duration = this.policyDuration;
+    const smoke = this.todo.value['smoke'];
+    const gender = this.todo.value['gender'];
+    return {"pk": pk,
+            "sk": sk,
+            "age": age,
+            "duration": duration,
+            "smoke": smoke,
+            "gender": gender};
   }
   
    logForm(){
@@ -80,7 +88,7 @@ export class FormPage implements OnInit {
     this.age = this.calculateAge(new Date(this.todo.value["dob"]));
 
     API.post('writerresource', '/writer', {
-      body: this.getpksk()}).then(response => {
+      body: this.getPutPayload()}).then(response => {
         console.log(response);
         this.submitted = true;
         this.quote = response.data.quote;

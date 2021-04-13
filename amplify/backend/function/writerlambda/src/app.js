@@ -89,7 +89,11 @@ app.get(path + hashKeyPath, function(req, res) {
     if (element.startsWith('Limit')) {
       queryParams['Limit'] = element.split('=')[1];
     }
+    else {
+      queryParams['Limit'] = 10;
+    }
   });
+  
 
   dynamodb.query(queryParams, (err, data) => {
     if (err) {
@@ -204,15 +208,34 @@ app.post(path, function(req, res) {
   let policyDuration = Math.floor(Math.random() * (polMax - polMin) + polMin);
 
 
+  
   // req.body.pk = req.apiGateway.event.requestContext.identity.user;
   req.body.sk = "q#" + currentTSiso + "#" + qId;
   req.body.quote = quote;
   req.body.qId = qId;
   req.body.duration = policyDuration;
   
+  const putItemParamsItem = {
+    "pk": req.body.pk,
+    "sk": req.body.sk,
+    "qId": req.body.qId,
+    "duration": req.body.duration,
+    "smoker": req.body.smoker,
+    "gender": req.body.gender,
+    "quote": req.body.quote,
+    "age": req.body.age
+  };
+
+  if (req.body.test == "yes"){
+    putItemParamsItem.pk = "foo@amazon.com",
+    putItemParamsItem.test = "test"
+  };
+
+  // console.log(putItemParamsItem)
+  
   let putItemParams = {
     TableName: tableName,
-    Item: req.body
+    Item: putItemParamsItem
   }
   
   dynamodb.put(putItemParams, (err, data) => {
