@@ -1,55 +1,22 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-ioniccapstoneamplify-dev-174750-authRole",
-      "UnauthRoleArn": "arn:aws:iam::875455972506:role/amplify-ioniccapstoneamplify-dev-174750-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::875455972506:role/amplify-ioniccapstoneamplify-dev-174750-authRole",
+      "AuthRoleName": "amplify-ioniccapstoneamplify-dev-120238-authRole",
+      "UnauthRoleArn": "arn:aws:iam::875455972506:role/amplify-ioniccapstoneamplify-dev-120238-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::875455972506:role/amplify-ioniccapstoneamplify-dev-120238-authRole",
       "Region": "eu-west-1",
-      "DeploymentBucketName": "amplify-ioniccapstoneamplify-dev-174750-deployment",
-      "UnauthRoleName": "amplify-ioniccapstoneamplify-dev-174750-unauthRole",
-      "StackName": "amplify-ioniccapstoneamplify-dev-174750",
-      "StackId": "arn:aws:cloudformation:eu-west-1:875455972506:stack/amplify-ioniccapstoneamplify-dev-174750/18643530-707f-11eb-a0de-06d43d249c1b",
-      "AmplifyAppId": "d3nnmyupeos3jk"
+      "DeploymentBucketName": "amplify-ioniccapstoneamplify-dev-120238-deployment",
+      "UnauthRoleName": "amplify-ioniccapstoneamplify-dev-120238-unauthRole",
+      "StackName": "amplify-ioniccapstoneamplify-dev-120238",
+      "StackId": "arn:aws:cloudformation:eu-west-1:875455972506:stack/amplify-ioniccapstoneamplify-dev-120238/b81e3220-c1ff-11eb-b4bd-02d1364427d7",
+      "AmplifyAppId": "d28l9uehpachck"
     },
     "categories": {
       "auth": {
         "ioniccapstoneamplifycff544c3": {}
       },
       "function": {
-        "writerlambda": {
-          "deploymentBucketName": "amplify-ioniccapstoneamplify-dev-174750-deployment",
-          "s3Key": "amplify-builds/writerlambda-537a542f356849643063-build.zip"
-        }
-      }
-    }
-  },
-  "sampledev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-ioniccapstoneamplify-sampledev-134617-authRole",
-      "UnauthRoleArn": "arn:aws:iam::875455972506:role/amplify-ioniccapstoneamplify-sampledev-134617-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::875455972506:role/amplify-ioniccapstoneamplify-sampledev-134617-authRole",
-      "Region": "eu-west-2",
-      "DeploymentBucketName": "amplify-ioniccapstoneamplify-sampledev-134617-deployment",
-      "UnauthRoleName": "amplify-ioniccapstoneamplify-sampledev-134617-unauthRole",
-      "StackName": "amplify-ioniccapstoneamplify-sampledev-134617",
-      "StackId": "arn:aws:cloudformation:eu-west-2:875455972506:stack/amplify-ioniccapstoneamplify-sampledev-134617/3ed85ea0-9c56-11eb-a0e0-02b006d9d590",
-      "AmplifyAppId": "dcnkfmjsn45sp"
-    },
-    "categories": {
-      "auth": {
-        "ioniccapstoneamplifycff544c3": {}
-      },
-      "function": {
-        "writerlambda": {
-          "deploymentBucketName": "amplify-ioniccapstoneamplify-sampledev-134617-deployment",
-          "s3Key": "amplify-builds/writerlambda-70304c325337434c4371-build.zip"
-        }
-      },
-      "hosting": {
-        "amplifyhosting": {
-          "appId": "dcnkfmjsn45sp",
-          "type": "cicd"
-        }
+        "writerlambda": {}
       }
     }
   }

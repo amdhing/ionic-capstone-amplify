@@ -15,9 +15,9 @@ Sample acts as a User trying to getting an insurance quote on entering some info
 Tested only with
 - node v14.1.0
 - npm 6.14.4
-- "aws-amplify": "^3.3.19"
-- "@ionic/angular": "^5.5.2"
-- "@angular/core": "~11.2.0"
+- aws-amplify: ^3.3.19
+- @ionic/angular: ^5.5.2
+- @angular/core: ~11.2.0
 
 Disclaimer: Not a frontend developer, was just able to build this from referring the respective ionic and amplify docs, plus some DDG fu.
 
@@ -42,14 +42,18 @@ $ npm install -g @angular/cli
 - Clone this repo
 
 ```bash
-$ git clone https://github.com/amdhing/ionic-capstone-amplify.git
+git clone https://github.com/amdhing/ionic-capstone-amplify.git
 ```
 
-- Initialize amplify
+- Install dependencies and initialize amplify
 
 ```bash
-$ cd ionic-capstone-amplify
-$ amplify init
+cd ionic-capstone-amplify
+npm install
+amplify init
+```
+- Prompt might look something like this
+```bash
 ? Do you want to use an existing environment? <No>
 ? Enter a name for the environment <sampledev>
 ? Choose your default editor: <Visual Studio Code>
@@ -79,6 +83,12 @@ Current Environment: <sampledev>
 | Function | writerlambda                 | Create    | awscloudformation |
 | Api      | writerresource               | Create    | awscloudformation |
 ```
+- Setup hosting (default = none)
+
+```bash
+amplify add hosting
+```
+
 
 - Create cloud resources
 
