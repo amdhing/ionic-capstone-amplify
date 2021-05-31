@@ -27,14 +27,14 @@ Disclaimer: Not a frontend developer, was just able to build this from referring
 - Install the amplify-cli ( Installs globally below )
 
 ```bash
-$ npm install -g @aws-amplify/cli
+npm install -g @aws-amplify/cli
 ```
 
 - You might also need to install ionic and angular
 
 ```bash
-$ npm install -g @ionic/cli
-$ npm install -g @angular/cli
+npm install -g @ionic/cli
+npm install -g @angular/cli
 ```
 
 ## Project setup
@@ -88,12 +88,26 @@ Current Environment: <sampledev>
 ```bash
 amplify add hosting
 ```
+```bash
+? Select the plugin module to execute Hosting with Amplify Console (Managed hosting with custom domains, Continuous deployment)
+? Choose a type Manual deployment
 
+You can now publish your app using the following command:
+
+Command: amplify publish
+```
 
 - Create cloud resources
 
+`amplify publish` deploys the frontend as well as backend
+
+`amplify push` deploys the backend only 
+
 ```bash
-$ amplify push
+amplify publish
+```
+
+```bash
 ✔ Successfully pulled backend environment <sampledev> from the cloud.
 
 Current Environment: <sampledev>
@@ -104,6 +118,7 @@ Current Environment: <sampledev>
 | Storage  | newcodb                      | Create    | awscloudformation |
 | Function | writerlambda                 | Create    | awscloudformation |
 | Api      | writerresource               | Create    | awscloudformation |
+| Hosting  | amplifyhosting               | Create    | awscloudformation |
 
 ? Are you sure you want to continue? (Y/n) <Yes>
 ⠹ Updating resources in the cloud. This may take a few minutes...
@@ -112,6 +127,12 @@ Current Environment: <sampledev>
 ✔ All resources are updated in the cloud
 
 REST API endpoint: https://<randomapiuuid>.execute-api.eu-west-1.amazonaws.com/<sampledev>
+```
+If hosting using manual deployment (non git-based) the prompt should end with:
+```bash
+✔ Zipping artifacts completed.
+✔ Deployment complete!
+https://<sampledev>.<abcdefgh>.amplifyapp.com
 ```
 
 - (Optional) Launch your frontend locally
@@ -138,7 +159,11 @@ This should open up `http://localhost:8100` on the browser
 
 ## Hosting frontend using AWS Amplify
 
-- Create a github (or another options on the AWS Amplify console)
+Adding hosting in the most simplest way is using Manual Deployment, which builds, packages and deploys the frontend using Amplify.
+
+Other options include connecting Amplify app to a github repository, where any changes made to the repo automatically get deployed to the app. Here's a bit more on achieving the same.
+
+- Create a github repo (or another options on the AWS Amplify console)
 - Go to the AWS Amplify console and connect the app with your github repo
 
 ![AWS Amplify](/docs/img/aws-amplify-setup-frontend.png)
