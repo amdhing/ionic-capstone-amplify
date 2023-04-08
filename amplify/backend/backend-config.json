@@ -1,54 +1,94 @@
 {
-  "auth": {
-    "ioniccapstoneamplifycff544c3": {
-      "service": "Cognito",
+  "api": {
+    "writerresource": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "writerlambda"
+        }
+      ],
       "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false
+      "service": "API Gateway"
     }
   },
-  "storage": {
-    "newcodb": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
+  "auth": {
+    "ioniccapstoneamplifycff544c3": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
     }
   },
   "function": {
     "writerlambda": {
       "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
       "dependsOn": [
         {
-          "category": "storage",
-          "resourceName": "newcodb",
+          "attributeEnvMap": {
+            "Arn": "TABLE_ARN",
+            "Name": "TABLE_NAME"
+          },
           "attributes": [
             "Name",
             "Arn"
           ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
+          "category": "storage",
+          "resourceName": "newcodb"
         }
-      ]
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
-  "api": {
-    "writerresource": {
-      "service": "API Gateway",
+  "hosting": {
+    "amplifyhosting": {
       "providerPlugin": "awscloudformation",
-      "dependsOn": [
+      "service": "amplifyhosting",
+      "type": "manual"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_writerlambda_deploymentBucketName": {
+      "usedBy": [
         {
           "category": "function",
-          "resourceName": "writerlambda",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
+          "resourceName": "writerlambda"
+        }
+      ]
+    },
+    "AMPLIFY_function_writerlambda_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "writerlambda"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_appId": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
+        }
+      ]
+    },
+    "AMPLIFY_hosting_amplifyhosting_type": {
+      "usedBy": [
+        {
+          "category": "hosting",
+          "resourceName": "amplifyhosting"
         }
       ]
     }
   },
-  "hosting": {}
+  "storage": {
+    "newcodb": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
 }
